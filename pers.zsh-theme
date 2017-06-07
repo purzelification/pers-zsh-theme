@@ -1,5 +1,8 @@
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%?%} )"
-PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+function collapse_pwd {
+    echo $(pwd | sed -e "s,^$HOME,~,")
+}
+PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(collapse_pwd) $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
