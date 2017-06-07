@@ -1,7 +1,12 @@
 local ret_status="%(?:%{$fg_bold[green]%?%} :%{$fg_bold[red]%?%} )"
+
+# concat paths like /home/user/blabla to user/blabla
 function collapse_pwd {
     echo $(pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_)
 }
+
+# shows the branch and number of changed files in a git repo.
+# taken from github.com/Parth/dotfiles
 function git_info {
     if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true'; then
         STR="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD)%{$reset_color%}"
@@ -11,4 +16,5 @@ function git_info {
     fi
     echo $STR
 }
+
 PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
