@@ -17,4 +17,4 @@ function git_info {
     echo $STR
 }
 
-PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
+PROMPT='[$(ret_status) %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
