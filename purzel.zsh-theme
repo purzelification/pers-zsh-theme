@@ -1,4 +1,4 @@
-local ret_status="%(?:%{$fg_bold[green]%?%} :%{$fg_bold[red]%?%} )"
+local ret_status="%{$fg[white]%}[%{$reset_color%}"
 
 # concat paths like /home/user/blabla to user/blabla
 function collapse_pwd {
