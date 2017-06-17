@@ -1,4 +1,6 @@
-local ret_status="%(?.., %{$fg[red]%}%?%{$reset_color%})"
+function ret_status {
+    echo "%(?.%{$fg[green]%}%?%{$reset_color%}.%{$fg[red]%}%?%{$reset_color%})"
+}
 #local ret_status="%(?:%{$fg_bold[green]%?%} :%{$fg_bold[red]%?%} )"
 
 # concat paths like /home/user/blabla to user/blabla
@@ -18,4 +20,4 @@ function git_info {
     echo $STR
 }
 
-PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
+PROMPT='[$(ret_status) %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
