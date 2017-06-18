@@ -10,7 +10,7 @@ function collapse_pwd {
 # taken from github.com/Parth/dotfiles
 function git_info {
     if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true'; then
-        STR="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD)%{$reset_color%}"
+        STR=" %{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD)%{$reset_color%}"
         if [ $(git status --short | wc -l) -gt 0 ]; then
             STR+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
         fi
@@ -18,4 +18,4 @@ function git_info {
     echo $STR
 }
 
-PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd) %{$reset_color%}$(git_info)] '
+PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd)%{$reset_color%}$(git_info)] '
