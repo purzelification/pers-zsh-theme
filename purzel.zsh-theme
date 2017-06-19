@@ -1,11 +1,11 @@
 function ret_status {
-    echo "%(?.%{$fg[green]%}%?%{$reset_color%}.%{$fg[red]%}%?%{$reset_color%})"
+    return "%(?.%{$fg[green]%}%?%{$reset_color%}.%{$fg[red]%}%?%{$reset_color%})"
 }
 #local ret_status="%(?:%{$fg_bold[green]%?%} :%{$fg_bold[red]%?%} )"
 
 # concat paths like /home/user/blabla to user/blabla
 function collapse_pwd {
-    echo $(pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_)
+    return $(pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_)
 }
 
 # shows the branch and number of changed files in a git repo.
@@ -17,7 +17,7 @@ function git_info {
             STR+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
         fi
     fi
-    echo $STR
+    return $STR
 }
 
-PROMPT='[${ret_status} %{$fg[cyan]%}$(collapse_pwd)%{$reset_color%}$(git_info)] '
+PS1='[${ret_status} %{$fg[cyan]%}$(collapse_pwd)%{$reset_color%}$(git_info)] '
