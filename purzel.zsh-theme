@@ -1,5 +1,5 @@
 function ret_status {
-    return "%(?.%{$fg[green]%}%?%{$reset_color%}.%{$fg[red]%}%?%{$reset_color%})"
+    return "%(?..%{$fg[red]%}%?%{$reset_color%})"
 }
 #local ret_status="%(?:%{$fg_bold[green]%?%} :%{$fg_bold[red]%?%} )"
 
