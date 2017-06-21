@@ -15,6 +15,11 @@ set_prompt() {
 			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
+    SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+    if [ ${SUDO} -gt 0 ]
+    then
+        PS1+=" %{$FG[160]%}SUDO%{$reset_color%}"
+    fi
 
     PS1+="]"
 }
